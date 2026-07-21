@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa24 Vlorë · A peaceful stay in the heart of Vlora</title>
+<meta name="description" content="Villa24 — an elegant, quiet aparthotel in the centre of Vlora, Albania. 4 private rooms with private bathrooms, free Lavazza coffee corner, steps from the historic centre.">
+<style>
+  :root{
+    --sand:#e6e6fa; --deep:#23022e; --teal:#004643; --gold:#aa78a6;
+    --ink:#241528; --muted:#8a7a90; --white:#fff; --line:rgba(35,2,46,.12);
+    --shadow:0 18px 45px -20px rgba(35,2,46,.45);
+    --radius:18px; --font:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--ink);background:var(--sand);line-height:1.65}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;line-height:1.15;color:var(--deep);font-weight:600}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;padding:14px 28px;border-radius:100px;font-weight:600;font-size:.95rem;transition:.25s;cursor:pointer;border:none;text-align:center}
+  .btn-gold{background:var(--gold);color:#23022e;box-shadow:0 10px 25px -10px rgba(170,120,166,.8)}
+  .btn-gold:hover{transform:translateY(-2px);filter:brightness(1.05)}
+  .btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.6);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.15)}
+  .eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;color:var(--teal)}
+  .hero .eyebrow{color:var(--gold)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(230,230,250,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:Georgia,serif;font-size:1.35rem;font-weight:700;color:var(--deep)}
+  .logo span{color:var(--gold)}
+  .logo .mark{width:38px;height:38px;border-radius:50%;background:var(--deep);color:var(--gold);display:grid;place-items:center;font-size:.85rem;letter-spacing:.03em}
+  .navlinks{display:flex;gap:28px;align-items:center;font-size:.92rem;font-weight:500}
+  .navlinks a{color:var(--ink);transition:.2s}
+  .navlinks a:hover{color:var(--teal)}
+  .lang{display:flex;gap:4px;font-size:.78rem;font-weight:700}
+  .lang span{padding:5px 9px;border-radius:6px;cursor:pointer;color:var(--muted);transition:.2s}
+  .lang span.on{background:var(--deep);color:var(--sand)}
+  .menu-btn{display:none;font-size:1.5rem;background:none;border:none;cursor:pointer}
+
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;
+    background:linear-gradient(120deg,rgba(35,2,46,.85),rgba(0,70,67,.55)),
+      radial-gradient(circle at 72% 28%,#007a74,#23022e);color:#fff;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(120deg,rgba(35,2,46,.82),rgba(0,70,67,.5))}
+  .hero .media-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero .wrap{position:relative;z-index:2;padding:60px 24px}
+  .hero h1{color:#fff;font-size:clamp(2.3rem,5.2vw,4rem);max-width:18ch;margin:18px 0 22px}
+  .hero p{font-size:1.12rem;max-width:56ch;opacity:.92;margin-bottom:34px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:38px;margin-top:52px;flex-wrap:wrap}
+  .hero-stats div{border-left:2px solid var(--gold);padding-left:14px}
+  .hero-stats b{display:block;font-size:1.55rem;font-family:Georgia,serif}
+  .hero-stats small{opacity:.82;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+
+  .booking{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+    margin:-46px auto 0;position:relative;z-index:10;max-width:980px;
+    padding:22px;display:grid;grid-template-columns:repeat(4,1fr) auto;gap:16px;align-items:end}
+  .booking label{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;display:block;margin-bottom:6px}
+  .booking input,.booking select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-size:.9rem;background:var(--sand);color:var(--ink)}
+  .booking .btn-gold{height:44px;padding:0 26px}
+
+  section{padding:88px 0}
+  .sec-head{text-align:center;max-width:660px;margin:0 auto 54px}
+  .sec-head h2{font-size:clamp(1.9rem,3.5vw,2.7rem);margin:12px 0}
+  .sec-head p{color:var(--muted);font-size:1.05rem}
+
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .about .imgcol{background:linear-gradient(160deg,#006b66,#23022e);border-radius:var(--radius);min-height:420px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .about .imgcol img.fill{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .about .imgcol .badge{position:absolute;bottom:20px;left:20px;background:rgba(255,255,255,.92);border-radius:14px;padding:14px 18px;z-index:2}
+  .about .imgcol .badge b{display:block;font-family:Georgia,serif;color:var(--deep);font-size:1.1rem}
+  .about .imgcol .badge small{color:var(--muted)}
+  .about p{color:var(--ink);margin-bottom:16px}
+  .about p.lead{font-size:1.12rem}
+  .about .histbox{background:#fff;border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:8px;font-size:.95rem;color:var(--muted)}
+
+  .grid-feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+  .feat{background:#fff;border-radius:var(--radius);padding:28px 24px;box-shadow:0 10px 30px -22px rgba(35,2,46,.5);transition:.25s;border:1px solid var(--line)}
+  .feat:hover{transform:translateY(-6px)}
+  .feat .ico{width:50px;height:50px;border-radius:14px;background:var(--sand);display:grid;place-items:center;font-size:1.4rem;margin-bottom:16px}
+  .feat h3{font-size:1.12rem;margin-bottom:8px}
+  .feat p{color:var(--muted);font-size:.9rem}
+
+  /* SPACES */
+  .spaces{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .spacecard{background:#fff;border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+  .spacecard h3{font-size:1.4rem;margin-bottom:10px}
+  .spacecard .big{font-size:2.6rem;font-family:Georgia,serif;color:var(--gold)}
+  .spacecard ul{list-style:none;margin-top:14px}
+  .spacecard ul li{padding:9px 0 9px 26px;position:relative;color:var(--muted);border-bottom:1px dashed var(--line);font-size:.94rem}
+  .spacecard ul li::before{content:"✦";position:absolute;left:0;color:var(--gold)}
+
+  /* PRICES */
+  .prices{background:#fff}
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:30px}
+  .pcard{background:var(--sand);border-radius:var(--radius);padding:26px 20px;text-align:center;border:1px solid var(--line);transition:.25s}
+  .pcard:hover{transform:translateY(-5px);border-color:var(--gold)}
+  .pcard .mon{text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:700;color:var(--teal)}
+  .pcard .amt{font-family:Georgia,serif;font-size:2.1rem;color:var(--deep);margin:8px 0 2px}
+  .pcard .amt small{font-size:.8rem;color:var(--muted);font-weight:400}
+  .pcard .per{font-size:.78rem;color:var(--muted)}
+  .price-note{background:var(--sand);border-radius:var(--radius);padding:24px 26px;display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+  .price-note .rooms-info{font-size:.92rem;color:var(--muted);max-width:60ch}
+  .price-note .rooms-info b{color:var(--ink)}
+  .longstay{margin-top:26px;background:linear-gradient(120deg,var(--teal),var(--deep));color:#fff;border-radius:var(--radius);padding:34px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .longstay h3{color:#fff;margin-bottom:6px}
+  .longstay p{opacity:.9;font-size:.95rem;max-width:52ch}
+
+  /* DISCOVER */
+  .disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .disc{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 34px -24px rgba(35,2,46,.6);border:1px solid var(--line)}
+  .disc .top{height:120px;color:#fff;display:flex;align-items:flex-end;padding:18px;font-family:Georgia,serif;font-size:1.25rem}
+  .disc .top.h{background:linear-gradient(160deg,#aa78a6,#6d4a69)}
+  .disc .top.s{background:linear-gradient(160deg,#006b66,#23022e)}
+  .disc .top.e{background:linear-gradient(160deg,#004643,#002e2c)}
+  .disc ul{list-style:none;padding:20px 24px}
+  .disc ul li{padding:8px 0 8px 22px;position:relative;font-size:.92rem;color:var(--ink);border-bottom:1px dashed var(--line)}
+  .disc ul li:last-child{border-bottom:none}
+  .disc ul li::before{content:"→";position:absolute;left:0;color:var(--gold)}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .gallery figure{margin:0;border-radius:14px;overflow:hidden;aspect-ratio:1/1;cursor:pointer;position:relative;background:linear-gradient(160deg,#006b66,#23022e)}
+  .gallery figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+  .gallery figure::after{content:"⤢";position:absolute;top:10px;right:12px;color:#fff;opacity:0;font-size:1rem;transition:.25s;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+  .gallery figure:hover img{transform:scale(1.07)}
+  .gallery figure:hover::after{opacity:.9}
+  @media(max-width:900px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+  /* LIGHTBOX */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(25,0,33,.93);display:none;align-items:center;justify-content:center;padding:28px}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:88vh;border-radius:10px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+  .lb-close{position:absolute;top:16px;right:24px;font-size:2.6rem;line-height:1;background:none;border:none;color:#fff;cursor:pointer}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:1.5rem;background:rgba(255,255,255,.14);border:none;color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;transition:.2s;display:grid;place-items:center}
+  .lb-nav:hover{background:var(--gold);color:#23022e}
+  .lb-prev{left:18px}.lb-next{right:18px}
+  .lb-count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.8);font-size:.85rem;letter-spacing:.1em}
+  @media(max-width:600px){.lb-nav{width:42px;height:42px;font-size:1.2rem}}
+
+  /* STAY */
+  .stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .stay{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);border-top:4px solid var(--gold);display:flex;flex-direction:column}
+  .stay .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);font-weight:700}
+  .stay h3{font-size:1.5rem;margin:8px 0 4px}
+  .stay .sub{font-style:italic;color:var(--gold);margin-bottom:14px;font-family:Georgia,serif}
+  .stay p{color:var(--muted);font-size:.94rem;margin-bottom:20px;flex:1}
+  .stay a{align-self:flex-start}
+
+  /* WHY */
+  .why{background:var(--deep);color:#fff;text-align:center}
+  .why .eyebrow{color:var(--gold)}
+  .why h2{color:#fff;font-size:clamp(1.9rem,3.5vw,2.7rem);margin:12px auto 30px;max-width:20ch}
+  .why .lines p{font-family:Georgia,serif;font-size:1.35rem;opacity:.92;margin:10px 0;line-height:1.5}
+  .why .lines p:last-child{color:var(--gold);opacity:1;margin-top:20px}
+
+  /* CTA */
+  .cta-band{background:linear-gradient(120deg,var(--teal),var(--deep));color:#fff;text-align:center;border-radius:var(--radius);padding:64px 30px;box-shadow:var(--shadow)}
+  .cta-band h2{color:#fff;font-size:2.2rem;margin-bottom:14px}
+  .cta-band p{opacity:.9;margin-bottom:28px;max-width:50ch;margin-inline:auto}
+  .cta-band .btnrow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{background:#190021;color:rgba(255,255,255,.75);padding:60px 0 26px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+  footer h4{color:#fff;font-family:Georgia,serif;margin-bottom:14px;font-size:1.05rem}
+  footer a{display:block;padding:5px 0;font-size:.9rem;transition:.2s}
+  footer a:hover{color:var(--gold)}
+  .foot-logo{font-family:Georgia,serif;font-size:1.4rem;color:#fff;margin-bottom:12px}
+  .foot-logo span{color:var(--gold)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem}
+  .social{display:flex;gap:12px;margin-top:16px}
+  .social a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:1rem}
+  .social a:hover{background:var(--gold);color:#23022e}
+
+  @media(max-width:900px){
+    .navlinks{display:none}
+    .menu-btn{display:block}
+    .booking{grid-template-columns:1fr 1fr;margin-top:-30px}
+    .about,.spaces{grid-template-columns:1fr}
+    .disc-grid,.stay-grid{grid-template-columns:1fr}
+    .price-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:520px){
+    .booking{grid-template-columns:1fr}
+    .price-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="logo"><span class="mark">V24</span>Villa <span>24</span></a>
+      <div class="navlinks">
+        <a href="#about" data-i18n="nav_about">About Villa24</a>
+        <a href="#prices" data-i18n="nav_prices">Rooms &amp; Prices</a>
+        <a href="#discover" data-i18n="nav_discover">Discover Vlora</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </div>
+      <div style="display:flex;gap:16px;align-items:center">
+        <div class="lang">
+          <span data-lang="en" class="on" onclick="setLang('en')">EN</span>
+          <span data-lang="sq" onclick="setLang('sq')">SQ</span>
+        </div>
+        <a href="mailto:villa24vlore@gmail.com?subject=Booking%20request%20-%20Villa24" class="btn btn-gold" style="padding:10px 20px" data-i18n="nav_book">Book Now</a>
+        <button class="menu-btn">☰</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="media-bg" src="IMG_0327.jpeg" alt="Villa24 Vlorë — camera" onerror="this.remove()">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="hero_eyebrow">Vlorë · Albanian Riviera</span>
+    <h1 data-i18n="hero_title">A peaceful stay. A city full of history.</h1>
+    <p data-i18n="hero_sub">An experience to remember. Villa24 — an elegant, quiet retreat in the heart of Vlora, just steps from the historic centre and a short walk from the sea.</p>
+    <div class="hero-cta">
+      <a href="#prices" class="btn btn-gold" data-i18n="hero_cta1">Choose your rate</a>
+      <a href="#about" class="btn btn-ghost" data-i18n="hero_cta2">Discover Villa24</a>
+    </div>
+    <div class="hero-stats">
+      <div><b>4</b><small data-i18n="stat1">Private rooms</small></div>
+      <div><b>170 m²</b><small data-i18n="stat2">Total elegant space</small></div>
+      <div><b>~600 m</b><small data-i18n="stat3">from the historic centre</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING BAR -->
+<div class="wrap">
+  <form class="booking" id="book" onsubmit="return false">
+    <div><label data-i18n="bk_checkin">Check-in</label><input type="date" value="2026-07-25"></div>
+    <div><label data-i18n="bk_checkout">Check-out</label><input type="date" value="2026-07-29"></div>
+    <div><label data-i18n="bk_guests">Guests</label><select>
+      <option data-i18n="g1">2 adults + 1 child</option>
+      <option data-i18n="g2">2 adults</option>
+      <option data-i18n="g3">3 adults</option>
+    </select></div>
+    <div><label data-i18n="bk_room">Room</label><select>
+      <option data-i18n="r1">Double + sofa bed</option>
+      <option data-i18n="r2">Triple + sofa bed (on request)</option>
+    </select></div>
+    <a href="mailto:villa24vlore@gmail.com?subject=Booking%20request%20-%20Villa24" class="btn btn-gold" style="display:grid;place-items:center" data-i18n="bk_search">Search</a>
+  </form>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div class="imgcol">
+      <img class="fill" src="IMG_0301.jpeg" alt="Villa24 interior" onerror="this.remove()">
+      <div class="badge"><b data-i18n="about_badge_b">Rruga “7 Nëntori”</b><small data-i18n="about_badge_s">Central Vlora · quiet area</small></div>
+    </div>
+    <div>
+      <span class="eyebrow" data-i18n="about_eyebrow">About Villa24</span>
+      <h2 style="font-size:2.3rem;margin:12px 0 18px" data-i18n="about_title">In the heart of Vlora</h2>
+      <p class="lead" data-i18n="about_p1">Where history, the sea and urban life meet, you'll find Villa24 — a space created with care and dedication. Set on Rruga “7 Nëntori” in the centre of Vlora, in a quiet and characterful area, it sits about 600 m from Muradie Square, the historic heart of the city, and around 1.5 km from the sea — so you can explore Vlora easily on foot.</p>
+      <p data-i18n="about_p2">Villa24 is an elegant, calm structure with 4 carefully furnished rooms, each with a private bathroom — combining simplicity, cleanliness and warm hospitality in an intimate, modern setting.</p>
+      <div class="histbox" data-i18n="about_hist">Vlora is one of the most important cities in Albanian history. It was here, on 28 November 1912, that the Independence of Albania was proclaimed. Today the city blends history and culture with the sea, nature, gastronomy and modern life.</div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="offer" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="offer_eyebrow">What we offer</span>
+      <h2 data-i18n="offer_title">Everything you need for a restful stay</h2>
+      <p data-i18n="offer_sub">Thoughtfully designed for holidaymakers, couples, families and travellers visiting Vlora all year round.</p>
+    </div>
+    <div class="grid-feat">
+      <div class="feat"><div class="ico">🛏️</div><h3 data-i18n="f1_h">Private room &amp; bathroom</h3><p data-i18n="f1_p">Every room has its own private bathroom for full comfort.</p></div>
+      <div class="feat"><div class="ico">🤫</div><h3 data-i18n="f2_h">Quiet &amp; private</h3><p data-i18n="f2_p">A calm, private environment away from the noise.</p></div>
+      <div class="feat"><div class="ico">🎨</div><h3 data-i18n="f3_h">Minimalist design</h3><p data-i18n="f3_p">Elegant, minimalist interiors with attention to detail.</p></div>
+      <div class="feat"><div class="ico">📶</div><h3 data-i18n="f4_h">Free Wi-Fi</h3><p data-i18n="f4_p">Fast Wi-Fi throughout the property.</p></div>
+      <div class="feat"><div class="ico">☕</div><h3 data-i18n="f5_h">Lavazza coffee corner</h3><p data-i18n="f5_p">A free Lavazza Espresso coffee corner for our guests.</p></div>
+      <div class="feat"><div class="ico">🗺️</div><h3 data-i18n="f6_h">Local insight</h3><p data-i18n="f6_p">Useful tips about the city and its tourist areas.</p></div>
+      <div class="feat"><div class="ico">🤝</div><h3 data-i18n="f7_h">Personal hospitality</h3><p data-i18n="f7_p">Dedicated, personal communication with every guest.</p></div>
+      <div class="feat"><div class="ico">📍</div><h3 data-i18n="f8_h">Central location</h3><p data-i18n="f8_p">Close to the centre and historic attractions.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACES -->
+<section id="spaces">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="spaces_eyebrow">Our spaces</span>
+      <h2 data-i18n="spaces_title">Four private rooms &amp; a shared coffee corner</h2>
+    </div>
+    <div class="spaces">
+      <div class="spacecard">
+        <div class="big">4</div>
+        <h3 data-i18n="spaces_rooms_h">Private rooms</h3>
+        <p style="color:var(--muted)" data-i18n="spaces_rooms_p">Each room is fitted with a private bathroom, offering privacy and comfort for every stay. Total surface of 170 m², with each room around 40 m².</p>
+      </div>
+      <div class="spacecard">
+        <h3 data-i18n="spaces_common_h">Shared spaces</h3>
+        <ul>
+          <li data-i18n="sc1">Shared corridor with a coffee corner</li>
+          <li data-i18n="sc2">Free Lavazza Espresso for our guests</li>
+          <li data-i18n="sc3">Curated spaces with local information &amp; decorative details</li>
+          <li data-i18n="sc4">A quiet, well-organised atmosphere</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="background:#fff;padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="gal_eyebrow">Gallery</span>
+      <h2 data-i18n="gal_title">A look inside Villa24</h2>
+      <p data-i18n="gal_sub">A glimpse of our rooms, bathrooms and flower-filled balconies.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="IMG_0276.jpeg" alt="Villa24 — twin room" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_5662.jpeg" alt="Villa24 — balcony flowers" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_0285.jpeg" alt="Villa24 — double room" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_0290.jpeg" alt="Villa24 — studio & kitchenette" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_0296.jpeg" alt="Villa24 — double room" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_0306.jpeg" alt="Villa24 — bathroom" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_0331.jpeg" alt="Villa24 — seating corner" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_0605.jpeg" alt="Villa24 — kitchenette" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_0617.jpeg" alt="Villa24 — coffee corner" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_5764.jpeg" alt="Villa24 — towels" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_5807.jpeg" alt="Villa24 — twin room" onerror="this.parentElement.remove()"></figure>
+      <figure><img src="IMG_5834.jpeg" alt="Villa24 — bathroom & wardrobe" onerror="this.parentElement.remove()"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PRICES -->
+<section id="prices" class="prices">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="price_eyebrow">Rooms &amp; Prices</span>
+      <h2 data-i18n="price_title">Summer rates, per night</h2>
+      <p data-i18n="price_sub">Prices are per night for 2 adults + 1 child. For 2 children, please send us a request.</p>
+    </div>
+    <div class="price-grid">
+      <div class="pcard"><div class="mon" data-i18n="m_jun">June</div><div class="amt"><small>from</small> €40</div><div class="per" data-i18n="pernight">per night</div></div>
+      <div class="pcard"><div class="mon" data-i18n="m_jul">July</div><div class="amt"><small>from</small> €45</div><div class="per" data-i18n="pernight">per night</div></div>
+      <div class="pcard"><div class="mon" data-i18n="m_aug">August</div><div class="amt"><small>from</small> €55</div><div class="per" data-i18n="pernight">per night</div></div>
+      <div class="pcard"><div class="mon" data-i18n="m_sep">September</div><div class="amt"><small>from</small> €45</div><div class="per" data-i18n="pernight">per night</div></div>
+    </div>
+    <div class="price-note">
+      <div class="rooms-info" data-i18n="rooms_info"><b>Rooms:</b> 3 double rooms + sofa bed · 1 triple room + sofa bed (on request). The triple room is €5 more per night during the season.</div>
+      <a href="#contact" class="btn btn-gold" data-i18n="price_cta">Request the best available rate</a>
+    </div>
+    <div class="longstay">
+      <div>
+        <h3 data-i18n="ls_h">Weekly &amp; monthly stays</h3>
+        <p data-i18n="ls_p">Special weekly and monthly rates are available on request — ideal for slow travel, remote work and longer escapes.</p>
+      </div>
+      <a href="#contact" class="btn btn-gold" data-i18n="ls_cta">Request a long-stay offer</a>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOVER -->
+<section id="discover" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="disc_eyebrow">Discover Vlora</span>
+      <h2 data-i18n="disc_title">Explore Vlora from Villa24</h2>
+      <p data-i18n="disc_sub">Staying at Villa24 places you close to some of the most interesting spots in the city and the surrounding area.</p>
+    </div>
+    <div class="disc-grid">
+      <div class="disc">
+        <div class="top h" data-i18n="disc_h">History &amp; Culture</div>
+        <ul>
+          <li data-i18n="dh1">Flag Square &amp; Independence Monument</li>
+          <li data-i18n="dh2">Muradie Mosque</li>
+          <li data-i18n="dh3">Old Town of Vlora</li>
+          <li data-i18n="dh4">National Museum of Independence</li>
+          <li data-i18n="dh5">Kanina Castle</li>
+          <li data-i18n="dh6">Kuzum Baba</li>
+        </ul>
+      </div>
+      <div class="disc">
+        <div class="top s" data-i18n="disc_s">Sea &amp; Nature</div>
+        <ul>
+          <li data-i18n="ds1">Lungomare promenade</li>
+          <li data-i18n="ds2">Vlora beaches</li>
+          <li data-i18n="ds3">Radhimë</li>
+          <li data-i18n="ds4">Narta Lagoon</li>
+          <li data-i18n="ds5">Zvërnec Island &amp; Monastery</li>
+          <li data-i18n="ds6">Karaburun–Sazan Marine Park</li>
+          <li data-i18n="ds7">Sazan Island &amp; Haxhi Ali Cave</li>
+        </ul>
+      </div>
+      <div class="disc">
+        <div class="top e" data-i18n="disc_e">Walks &amp; Experiences</div>
+        <ul>
+          <li data-i18n="de1">Walks along the Lungomare</li>
+          <li data-i18n="de2">Exploring the old town</li>
+          <li data-i18n="de3">Boat trips to Karaburun &amp; Sazan</li>
+          <li data-i18n="de4">Beach &amp; water sports</li>
+          <li data-i18n="de5">Nature &amp; lagoons</li>
+          <li data-i18n="de6">Traditional gastronomy</li>
+          <li data-i18n="de7">Wineries &amp; agrotourism</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAY YOUR WAY -->
+<section id="stay">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="stay_eyebrow">Stay Your Way</span>
+      <h2 data-i18n="stay_title">Daily, weekly &amp; monthly stays</h2>
+      <p data-i18n="stay_sub">Whatever your rhythm, Villa24 adapts to the way you want to experience Vlora.</p>
+    </div>
+    <div class="stay-grid">
+      <div class="stay">
+        <span class="k" data-i18n="daily_k">Daily Stay</span>
+        <h3 data-i18n="daily_h">For a short escape</h3>
+        <div class="sub" data-i18n="daily_sub">Weekends &amp; short visits</div>
+        <p data-i18n="daily_p">Ideal for weekends, short visits, business trips, couples and travellers who want to explore the city at their own pace.</p>
+        <a href="#book" class="btn btn-gold" style="padding:11px 22px" data-i18n="daily_cta">Book a night</a>
+      </div>
+      <div class="stay">
+        <span class="k" data-i18n="weekly_k">Weekly Stay</span>
+        <h3 data-i18n="weekly_h">Live Vlora more slowly</h3>
+        <div class="sub" data-i18n="weekly_sub">7 nights or more</div>
+        <p data-i18n="weekly_p">Combine beach days, city walks, boat trips, historic visits and quiet moments. Special rates for stays of 7 nights or more.</p>
+        <a href="#contact" class="btn btn-gold" style="padding:11px 22px" data-i18n="weekly_cta">Get weekly offer</a>
+      </div>
+      <div class="stay">
+        <span class="k" data-i18n="monthly_k">Monthly Stay</span>
+        <h3 data-i18n="monthly_h">For a longer escape</h3>
+        <div class="sub" data-i18n="monthly_sub">Live &amp; work in Vlora</div>
+        <p data-i18n="monthly_p">Ideal for digital nomads, professionals, students and anyone wanting to experience Vlora beyond the tourist season. Special monthly rates available.</p>
+        <a href="#contact" class="btn btn-gold" style="padding:11px 22px" data-i18n="monthly_cta">Request monthly rate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="why_eyebrow">Why Villa24</span>
+    <h2 data-i18n="why_title">Because the best holidays don't ask for much</h2>
+    <div class="lines">
+      <p data-i18n="why_l1">A clean room.</p>
+      <p data-i18n="why_l2">A quiet setting.</p>
+      <p data-i18n="why_l3">A good coffee in the morning.</p>
+      <p data-i18n="why_l4">A city to discover.</p>
+      <p data-i18n="why_l5">And the feeling that someone cared about the details.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="wrap">
+    <div class="cta-band" id="contact">
+      <span class="eyebrow" style="color:var(--gold)" data-i18n="cta_eyebrow">Book now</span>
+      <h2 data-i18n="cta_title">Your stay in Vlora awaits</h2>
+      <p data-i18n="cta_sub">Contact us directly for the best available rate, or request a weekly / monthly long-stay offer.</p>
+      <div class="btnrow">
+        <a href="mailto:villa24vlore@gmail.com" class="btn btn-gold" data-i18n="cta_btn1">Contact us for the best rate</a>
+        <a href="tel:+355692049179" class="btn btn-ghost" data-i18n="cta_btn3">Call +355 69 204 9179</a>
+        <a href="https://www.instagram.com/villa24vlore/" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="cta_btn2">Message us on Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">Villa <span>24</span></div>
+        <p style="font-size:.9rem" data-i18n="foot_about">An elegant aparthotel in the heart of Vlora — private rooms, comfort and warm hospitality near the historic centre.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/villa24vlore/" target="_blank" rel="noopener" title="Instagram">📷</a>
+          <a href="https://www.booking.com/hotel/al/villa24-vlore.it.html#availability" target="_blank" rel="noopener" title="Booking.com">B</a>
+        </div>
+      </div>
+      <div>
+        <h4 data-i18n="foot_explore">Explore</h4>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#discover" data-i18n="nav_discover">Discover Vlora</a>
+        <a href="#stay" data-i18n="nav_stay">Stay Your Way</a>
+        <a href="#prices" data-i18n="nav_prices">Rooms &amp; Prices</a>
+      </div>
+      <div>
+        <h4 data-i18n="foot_info">Information</h4>
+        <a href="#" data-i18n="foot_checkin">Check-in 14:30 · Check-out 10:00</a>
+        <a href="#discover" data-i18n="foot_getting">Getting around</a>
+        <a href="#prices" data-i18n="foot_offers">Long-stay offers</a>
+      </div>
+      <div>
+        <h4 data-i18n="foot_contact">Contact</h4>
+        <a href="#">Rruga “7 Nëntori”, Vlorë, Albania</a>
+        <a href="tel:+355692049179">+355 69 204 9179</a>
+        <a href="mailto:villa24vlore@gmail.com">villa24vlore@gmail.com</a>
+        <a href="https://www.instagram.com/villa24vlore/" target="_blank" rel="noopener">@villa24vlore</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="foot_rights">© 2026 Villa24 Vlorë · Demo mockup</span>
+      <span data-i18n="foot_legal">Privacy · Cookies · Terms</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lb" onclick="lbBackdrop(event)">
+  <button class="lb-close" onclick="lbClose()" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" onclick="lbStep(-1,event)" aria-label="Previous">&#10094;</button>
+  <img id="lb-img" src="" alt="Villa24">
+  <button class="lb-nav lb-next" onclick="lbStep(1,event)" aria-label="Next">&#10095;</button>
+  <div class="lb-count" id="lb-count"></div>
+</div>
+
+<script>
+// --- Gallery lightbox ---
+let lbList=[], lbIdx=0;
+function lbInit(){
+  const imgs=document.querySelectorAll('.gallery img');
+  lbList=[...imgs].map(i=>i.getAttribute('src'));
+  imgs.forEach((im,i)=>im.addEventListener('click',()=>lbOpen(i)));
+}
+function lbShow(){
+  document.getElementById('lb-img').src=lbList[lbIdx];
+  document.getElementById('lb-count').textContent=(lbIdx+1)+' / '+lbList.length;
+}
+function lbOpen(i){lbIdx=i;lbShow();document.getElementById('lightbox').classList.add('open');}
+function lbClose(){document.getElementById('lightbox').classList.remove('open');}
+function lbBackdrop(e){if(e.target.id==='lightbox')lbClose();}
+function lbStep(d,e){if(e)e.stopPropagation();lbIdx=(lbIdx+d+lbList.length)%lbList.length;lbShow();}
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lightbox').classList.contains('open'))return;
+  if(e.key==='Escape')lbClose();
+  else if(e.key==='ArrowRight')lbStep(1);
+  else if(e.key==='ArrowLeft')lbStep(-1);
+});
+lbInit();
+</script>
+
+<script>
+const I18N = {
+  en: {
+    nav_about:"About Villa24", nav_discover:"Discover Vlora", nav_stay:"Stay Your Way", nav_prices:"Rooms & Prices", nav_contact:"Contact", nav_book:"Book Now",
+    hero_eyebrow:"Vlorë · Albanian Riviera",
+    hero_title:"A peaceful stay. A city full of history.",
+    hero_sub:"An experience to remember. Villa24 — an elegant, quiet retreat in the heart of Vlora, just steps from the historic centre and a short walk from the sea.",
+    hero_cta1:"Choose your rate", hero_cta2:"Discover Villa24",
+    stat1:"Private rooms", stat2:"Total elegant space", stat3:"from the historic centre",
+    bk_checkin:"Check-in", bk_checkout:"Check-out", bk_guests:"Guests", bk_room:"Room", bk_search:"Search",
+    g1:"2 adults + 1 child", g2:"2 adults", g3:"3 adults",
+    r1:"Double + sofa bed", r2:"Triple + sofa bed (on request)",
+    about_badge_b:"Rruga “7 Nëntori”", about_badge_s:"Central Vlora · quiet area",
+    about_eyebrow:"About Villa24", about_title:"In the heart of Vlora",
+    about_p1:"Where history, the sea and urban life meet, you'll find Villa24 — a space created with care and dedication. Set on Rruga “7 Nëntori” in the centre of Vlora, in a quiet and characterful area, it sits about 600 m from Muradie Square, the historic heart of the city, and around 1.5 km from the sea — so you can explore Vlora easily on foot.",
+    about_p2:"Villa24 is an elegant, calm structure with 4 carefully furnished rooms, each with a private bathroom — combining simplicity, cleanliness and warm hospitality in an intimate, modern setting.",
+    about_hist:"Vlora is one of the most important cities in Albanian history. It was here, on 28 November 1912, that the Independence of Albania was proclaimed. Today the city blends history and culture with the sea, nature, gastronomy and modern life.",
+    offer_eyebrow:"What we offer", offer_title:"Everything you need for a restful stay",
+    offer_sub:"Thoughtfully designed for holidaymakers, couples, families and travellers visiting Vlora all year round.",
+    f1_h:"Private room & bathroom", f1_p:"Every room has its own private bathroom for full comfort.",
+    f2_h:"Quiet & private", f2_p:"A calm, private environment away from the noise.",
+    f3_h:"Minimalist design", f3_p:"Elegant, minimalist interiors with attention to detail.",
+    f4_h:"Free Wi-Fi", f4_p:"Fast Wi-Fi throughout the property.",
+    f5_h:"Lavazza coffee corner", f5_p:"A free Lavazza Espresso coffee corner for our guests.",
+    f6_h:"Local insight", f6_p:"Useful tips about the city and its tourist areas.",
+    f7_h:"Personal hospitality", f7_p:"Dedicated, personal communication with every guest.",
+    f8_h:"Central location", f8_p:"Close to the centre and historic attractions.",
+    spaces_eyebrow:"Our spaces", spaces_title:"Four private rooms & a shared coffee corner",
+    spaces_rooms_h:"Private rooms",
+    spaces_rooms_p:"Each room is fitted with a private bathroom, offering privacy and comfort for every stay. Total surface of 170 m², with each room around 40 m².",
+    spaces_common_h:"Shared spaces",
+    sc1:"Shared corridor with a coffee corner", sc2:"Free Lavazza Espresso for our guests",
+    sc3:"Curated spaces with local information & decorative details", sc4:"A quiet, well-organised atmosphere",
+    gal_eyebrow:"Gallery", gal_title:"A look inside Villa24", gal_sub:"A glimpse of our rooms, bathrooms and flower-filled balconies.",
+    price_eyebrow:"Rooms & Prices", price_title:"Summer rates, per night",
+    price_sub:"Prices are per night for 2 adults + 1 child. For 2 children, please send us a request.",
+    m_jun:"June", m_jul:"July", m_aug:"August", m_sep:"September", pernight:"per night",
+    rooms_info:"Rooms: 3 double rooms + sofa bed · 1 triple room + sofa bed (on request). The triple room is €5 more per night during the season.",
+    price_cta:"Request the best available rate",
+    ls_h:"Weekly & monthly stays",
+    ls_p:"Special weekly and monthly rates are available on request — ideal for slow travel, remote work and longer escapes.",
+    ls_cta:"Request a long-stay offer",
+    disc_eyebrow:"Discover Vlora", disc_title:"Explore Vlora from Villa24",
+    disc_sub:"Staying at Villa24 places you close to some of the most interesting spots in the city and the surrounding area.",
+    disc_h:"History & Culture", disc_s:"Sea & Nature", disc_e:"Walks & Experiences",
+    dh1:"Flag Square & Independence Monument", dh2:"Muradie Mosque", dh3:"Old Town of Vlora", dh4:"National Museum of Independence", dh5:"Kanina Castle", dh6:"Kuzum Baba",
+    ds1:"Lungomare promenade", ds2:"Vlora beaches", ds3:"Radhimë", ds4:"Narta Lagoon", ds5:"Zvërnec Island & Monastery", ds6:"Karaburun–Sazan Marine Park", ds7:"Sazan Island & Haxhi Ali Cave",
+    de1:"Walks along the Lungomare", de2:"Exploring the old town", de3:"Boat trips to Karaburun & Sazan", de4:"Beach & water sports", de5:"Nature & lagoons", de6:"Traditional gastronomy", de7:"Wineries & agrotourism",
+    stay_eyebrow:"Stay Your Way", stay_title:"Daily, weekly & monthly stays",
+    stay_sub:"Whatever your rhythm, Villa24 adapts to the way you want to experience Vlora.",
+    daily_k:"Daily Stay", daily_h:"For a short escape", daily_sub:"Weekends & short visits",
+    daily_p:"Ideal for weekends, short visits, business trips, couples and travellers who want to explore the city at their own pace.", daily_cta:"Book a night",
+    weekly_k:"Weekly Stay", weekly_h:"Live Vlora more slowly", weekly_sub:"7 nights or more",
+    weekly_p:"Combine beach days, city walks, boat trips, historic visits and quiet moments. Special rates for stays of 7 nights or more.", weekly_cta:"Get weekly offer",
+    monthly_k:"Monthly Stay", monthly_h:"For a longer escape", monthly_sub:"Live & work in Vlora",
+    monthly_p:"Ideal for digital nomads, professionals, students and anyone wanting to experience Vlora beyond the tourist season. Special monthly rates available.", monthly_cta:"Request monthly rate",
+    why_eyebrow:"Why Villa24", why_title:"Because the best holidays don't ask for much",
+    why_l1:"A clean room.", why_l2:"A quiet setting.", why_l3:"A good coffee in the morning.", why_l4:"A city to discover.", why_l5:"And the feeling that someone cared about the details.",
+    cta_eyebrow:"Book now", cta_title:"Your stay in Vlora awaits",
+    cta_sub:"Contact us directly for the best available rate, or request a weekly / monthly long-stay offer.",
+    cta_btn1:"Contact us for the best rate", cta_btn2:"Message us on Instagram", cta_btn3:"Call +355 69 204 9179",
+    foot_about:"An elegant aparthotel in the heart of Vlora — private rooms, comfort and warm hospitality near the historic centre.",
+    foot_explore:"Explore", foot_info:"Information", foot_contact:"Contact",
+    foot_checkin:"Check-in 14:30 · Check-out 10:00", foot_getting:"Getting around", foot_offers:"Long-stay offers",
+    foot_rights:"© 2026 Villa24 Vlorë · Demo mockup", foot_legal:"Privacy · Cookies · Terms"
+  },
+  sq: {
+    nav_about:"Rreth Villa24", nav_discover:"Zbulo Vlorën", nav_stay:"Qëndrimi Juaj", nav_prices:"Dhomat & Çmimet", nav_contact:"Kontakt", nav_book:"Rezervo",
+    hero_eyebrow:"Vlorë · Riviera Shqiptare",
+    hero_title:"Një qëndrim i qetë. Një qytet plot histori.",
+    hero_sub:"Një përvojë për t'u kujtuar. Villa24 — një strehë elegante dhe e qetë në zemër të Vlorës, vetëm disa hapa nga qendra historike dhe pak minuta nga deti.",
+    hero_cta1:"Zgjidhni çmimin tuaj", hero_cta2:"Zbulo Villa24",
+    stat1:"Dhoma private", stat2:"Sipërfaqe totale", stat3:"nga qendra historike",
+    bk_checkin:"Hyrja", bk_checkout:"Dalja", bk_guests:"Mysafirë", bk_room:"Dhoma", bk_search:"Kërko",
+    g1:"2 të rritur + 1 fëmijë", g2:"2 të rritur", g3:"3 të rritur",
+    r1:"Matrimoniale + sofa bed", r2:"Tripla + sofa bed (me kërkesë)",
+    about_badge_b:"Rruga “7 Nëntori”", about_badge_s:"Qendra e Vlorës · zonë e qetë",
+    about_eyebrow:"Rreth Villa24", about_title:"Në zemër të Vlorës",
+    about_p1:"Aty ku historia, deti dhe jeta urbane takohen, ndodhet Villa24 — një hapësirë e krijuar me dashuri dhe përkushtim. E vendosur në Rrugën “7 Nëntori” në qendër të Vlorës, në një zonë të qetë dhe karakteristike, ndodhet rreth 600 m nga Sheshi i Muradies, zemra historike e qytetit, dhe rreth 1.5 km nga deti — duke ju lejuar të eksploroni Vlorën lehtësisht në këmbë.",
+    about_p2:"Villa24 është një strukturë elegante dhe e qetë me 4 dhoma të arreduara me kujdes, secila me banjo private — duke kombinuar thjeshtësinë, pastërtinë dhe mikpritjen në një ambient intim dhe modern.",
+    about_hist:"Vlora është një nga qytetet më të rëndësishme të historisë shqiptare. Pikërisht këtu, më 28 Nëntor 1912, u shpall Pavarësia e Shqipërisë. Sot, qyteti ndërthur historinë dhe kulturën me detin, natyrën, gastronominë dhe jetën moderne.",
+    offer_eyebrow:"Çfarë ofrojmë", offer_title:"Gjithçka që ju nevojitet për një qëndrim të qetë",
+    offer_sub:"E krijuar me kujdes për pushuesit, çiftet, familjet dhe udhëtarët që vizitojnë Vlorën gjatë gjithë vitit.",
+    f1_h:"Dhomë & banjo private", f1_p:"Çdo dhomë ka banjon e vet private për komoditet të plotë.",
+    f2_h:"Ambient i qetë", f2_p:"Një ambient i qetë dhe privat, larg zhurmës.",
+    f3_h:"Dizajn minimalist", f3_p:"Ambiente elegante e minimaliste me kujdes për detajet.",
+    f4_h:"Wi-Fi falas", f4_p:"Wi-Fi i shpejtë në të gjithë strukturën.",
+    f5_h:"Kënd kafeje Lavazza", f5_p:"Kënd kafeje me Lavazza Espresso falas për miqtë tanë.",
+    f6_h:"Informacion vendor", f6_p:"Informacion i dobishëm për qytetin dhe zonat turistike.",
+    f7_h:"Mikpritje personale", f7_p:"Komunikim personal dhe i dedikuar me çdo mysafir.",
+    f8_h:"Pozicion qendror", f8_p:"Pranë qendrës dhe atraksioneve historike.",
+    spaces_eyebrow:"Hapësirat tona", spaces_title:"Katër dhoma private & një kënd kafeje",
+    spaces_rooms_h:"Dhoma private",
+    spaces_rooms_p:"Secila dhomë është e pajisur me banjo private, duke ofruar privatësi dhe komoditet. Sipërfaqe totale 170 m², ku secila dhomë shkon rreth 40 m².",
+    spaces_common_h:"Hapësira të përbashkëta",
+    sc1:"Korridor i përbashkët me kënd kafeje", sc2:"Lavazza Espresso falas për miqtë tanë",
+    sc3:"Hapësira të kuruara me informacion dhe detaje dekorative", sc4:"Një ambient i qetë dhe i organizuar",
+    gal_eyebrow:"Galeria", gal_title:"Një vështrim brenda Villa24", gal_sub:"Një vështrim i dhomave, banjove dhe ballkoneve tona plot lule.",
+    price_eyebrow:"Dhomat & Çmimet", price_title:"Çmimet e verës, për natë",
+    price_sub:"Çmimet janë për natë për 2 të rritur + 1 fëmijë. Për 2 fëmijë, ju lutemi dërgoni një kërkesë.",
+    m_jun:"Qershor", m_jul:"Korrik", m_aug:"Gusht", m_sep:"Shtator", pernight:"për natë",
+    rooms_info:"Dhomat: 3 dhoma matrimoniale + sofa bed · 1 dhomë tripla + sofa bed (me kërkesë). Dhoma tripla ka 5 € më shumë për natë gjatë sezonit.",
+    price_cta:"Kërko çmimin më të mirë",
+    ls_h:"Qëndrime javore & mujore",
+    ls_p:"Çmime speciale javore dhe mujore ofrohen me kërkesë — ideale për udhëtim të qetë, punë në distancë dhe qëndrime më të gjata.",
+    ls_cta:"Kërko një ofertë afatgjatë",
+    disc_eyebrow:"Zbulo Vlorën", disc_title:"Zbulo Vlorën nga Villa24",
+    disc_sub:"Qëndrimi në Villa24 ju vendos pranë disa prej pikave më interesante të qytetit dhe zonave përreth.",
+    disc_h:"Histori & Kulturë", disc_s:"Det & Natyrë", disc_e:"Shëtitje & Përvoja",
+    dh1:"Sheshi i Flamurit & Monumenti i Pavarësisë", dh2:"Xhamia e Muradies", dh3:"Qyteti i Vjetër i Vlorës", dh4:"Muzeu Kombëtar i Pavarësisë", dh5:"Kalaja e Kaninës", dh6:"Kuzum Baba",
+    ds1:"Shëtitorja Lungomare", ds2:"Plazhet e Vlorës", ds3:"Radhimë", ds4:"Laguna e Nartës", ds5:"Ishulli & Manastiri i Zvërnecit", ds6:"Parku Detar Karaburun–Sazan", ds7:"Ishulli i Sazanit & Shpella e Haxhi Aliut",
+    de1:"Shëtitje në Lungomare", de2:"Eksplorim i qytetit të vjetër", de3:"Udhëtime me varkë në Karaburun & Sazan", de4:"Plazh & sporte ujore", de5:"Natyrë & laguna", de6:"Gastronomi tradicionale", de7:"Kantina & agroturizëm",
+    stay_eyebrow:"Qëndrimi Juaj", stay_title:"Qëndrime ditore, javore & mujore",
+    stay_sub:"Cilido qoftë ritmi juaj, Villa24 përshtatet me mënyrën si doni ta jetoni Vlorën.",
+    daily_k:"Qëndrim Ditor", daily_h:"Për një arratisje të shkurtër", daily_sub:"Fundjava & vizita të shkurtra",
+    daily_p:"Ideal për fundjava, vizita të shkurtra, udhëtime pune, çifte dhe udhëtarë që duan të eksplorojnë qytetin me ritmin e tyre.", daily_cta:"Rezervo një natë",
+    weekly_k:"Qëndrim Javor", weekly_h:"Jetoni Vlorën më ngadalë", weekly_sub:"7 net ose më shumë",
+    weekly_p:"Kombinoni ditët në plazh, shëtitjet në qytet, udhëtimet me varkë, vizitat historike dhe momentet e qeta. Çmime speciale për qëndrime 7 net ose më shumë.", weekly_cta:"Merr ofertën javore",
+    monthly_k:"Qëndrim Mujor", monthly_h:"Për një qëndrim më të gjatë", monthly_sub:"Jeto & puno në Vlorë",
+    monthly_p:"Ideal për digital nomads, profesionistë, studentë dhe këdo që dëshiron ta përjetojë Vlorën përtej sezonit turistik. Çmime speciale mujore me kërkesë.", monthly_cta:"Kërko çmimin mujor",
+    why_eyebrow:"Pse Villa24", why_title:"Sepse pushimet më të bukura nuk kërkojnë shumë",
+    why_l1:"Një dhomë e pastër.", why_l2:"Një ambient i qetë.", why_l3:"Një kafe e mirë në mëngjes.", why_l4:"Një qytet për t'u zbuluar.", why_l5:"Dhe ndjesia se dikush u kujdes për detajet.",
+    cta_eyebrow:"Rezervo tani", cta_title:"Qëndrimi juaj në Vlorë ju pret",
+    cta_sub:"Na kontaktoni drejtpërdrejt për çmimin më të mirë, ose kërkoni një ofertë javore / mujore.",
+    cta_btn1:"Na kontaktoni për çmimin më të mirë", cta_btn2:"Na shkruani në Instagram", cta_btn3:"Na telefononi +355 69 204 9179",
+    foot_about:"Një aparthotel elegant në zemër të Vlorës — dhoma private, komoditet dhe mikpritje pranë qendrës historike.",
+    foot_explore:"Eksploro", foot_info:"Informacion", foot_contact:"Kontakt",
+    foot_checkin:"Hyrja 14:30 · Dalja 10:00", foot_getting:"Si të lëvizni", foot_offers:"Oferta afatgjata",
+    foot_rights:"© 2026 Villa24 Vlorë · Mockup demonstrativ", foot_legal:"Privatësi · Cookies · Kushtet"
+  }
+};
+
+function setLang(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(I18N[lang] && I18N[lang][k] !== undefined) el.textContent = I18N[lang][k];
+  });
+  document.querySelectorAll('.lang span').forEach(s=>s.classList.toggle('on', s.getAttribute('data-lang')===lang));
+}
+setLang('en');
+</script>
+</body>
+</html>
