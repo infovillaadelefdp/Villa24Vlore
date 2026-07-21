@@ -93,6 +93,19 @@
   .spacecard ul li{padding:9px 0 9px 26px;position:relative;color:var(--muted);border-bottom:1px dashed var(--line);font-size:.94rem}
   .spacecard ul li::before{content:"✦";position:absolute;left:0;color:var(--gold)}
 
+  /* ROOM TYPES */
+  .roomcards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:46px}
+  .rcard{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;border:1px solid var(--line)}
+  .rcard .rimg{height:200px;position:relative;overflow:hidden;background:linear-gradient(160deg,#006b66,#23022e)}
+  .rcard .rimg img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+  .rcard:hover .rimg img{transform:scale(1.06)}
+  .rcard .rbody{padding:22px 24px;display:flex;flex-direction:column;flex:1}
+  .rcard h3{font-size:1.2rem;margin-bottom:4px}
+  .rcard .occ{font-size:.85rem;color:var(--muted);margin-bottom:14px}
+  .rcard .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+  .rcard .tags span{background:var(--sand);color:var(--ink);font-size:.78rem;padding:5px 11px;border-radius:100px}
+  @media(max-width:900px){.roomcards{grid-template-columns:1fr}}
+
   /* PRICES */
   .prices{background:#fff}
   .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:30px}
@@ -347,7 +360,56 @@
 <section id="prices" class="prices">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow" data-i18n="price_eyebrow">Rooms &amp; Prices</span>
+      <span class="eyebrow" data-i18n="rooms_eyebrow">Our Rooms</span>
+      <h2 data-i18n="rooms_title">Rooms at Villa24</h2>
+      <p data-i18n="rooms_sub">Every room comes with a kitchenette, balcony, city view, free Wi-Fi, air-conditioning and a private bathroom.</p>
+    </div>
+    <div class="roomcards">
+      <div class="rcard">
+        <div class="rimg"><img src="IMG_0276.jpeg" alt="Superior Double or Twin Room" onerror="this.remove()"></div>
+        <div class="rbody">
+          <h3 data-i18n="rt1_h">Superior Double or Twin — City View</h3>
+          <div class="occ" data-i18n="rt1_occ">2 guests · double or twin beds</div>
+          <div class="tags">
+            <span data-i18n="t_view">City view</span>
+            <span data-i18n="t_kitchen">Kitchenette</span>
+            <span data-i18n="t_balcony">Balcony</span>
+            <span data-i18n="t_ac">A/C</span>
+            <span data-i18n="t_bath">Private bath</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcard">
+        <div class="rimg"><img src="IMG_0301.jpeg" alt="Double Room with Balcony" onerror="this.remove()"></div>
+        <div class="rbody">
+          <h3 data-i18n="rt2_h">Double Room with Balcony</h3>
+          <div class="occ" data-i18n="rt2_occ">2 adults + 1 child · balcony</div>
+          <div class="tags">
+            <span data-i18n="t_balcony">Balcony</span>
+            <span data-i18n="t_kitchen">Kitchenette</span>
+            <span data-i18n="t_view">City view</span>
+            <span data-i18n="t_wifi">Wi-Fi</span>
+            <span data-i18n="t_bath">Private bath</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcard">
+        <div class="rimg"><img src="IMG_0285.jpeg" alt="Large Double Room" onerror="this.remove()"></div>
+        <div class="rbody">
+          <h3 data-i18n="rt3_h">Large Double Room</h3>
+          <div class="occ" data-i18n="rt3_occ">2 guests · extra space (~40 m²)</div>
+          <div class="tags">
+            <span data-i18n="t_kitchen">Kitchenette</span>
+            <span data-i18n="t_balcony">Balcony</span>
+            <span data-i18n="t_ac">A/C</span>
+            <span data-i18n="t_wifi">Wi-Fi</span>
+            <span data-i18n="t_bath">Private bath</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="price_eyebrow">Rates</span>
       <h2 data-i18n="price_title">Summer rates, per night</h2>
       <p data-i18n="price_sub">Prices are per night for 2 adults + 1 child. For 2 children, please send us a request.</p>
     </div>
@@ -592,7 +654,12 @@ const I18N = {
     sc1:"Shared corridor with a coffee corner", sc2:"Free Lavazza Espresso for our guests",
     sc3:"Curated spaces with local information & decorative details", sc4:"A quiet, well-organised atmosphere",
     gal_eyebrow:"Gallery", gal_title:"A look inside Villa24", gal_sub:"A glimpse of our rooms, bathrooms and flower-filled balconies.",
-    price_eyebrow:"Rooms & Prices", price_title:"Summer rates, per night",
+    rooms_eyebrow:"Our Rooms", rooms_title:"Rooms at Villa24", rooms_sub:"Every room comes with a kitchenette, balcony, city view, free Wi-Fi, air-conditioning and a private bathroom.",
+    rt1_h:"Superior Double or Twin — City View", rt1_occ:"2 guests · double or twin beds",
+    rt2_h:"Double Room with Balcony", rt2_occ:"2 adults + 1 child · balcony",
+    rt3_h:"Large Double Room", rt3_occ:"2 guests · extra space (~40 m²)",
+    t_view:"City view", t_kitchen:"Kitchenette", t_balcony:"Balcony", t_ac:"A/C", t_bath:"Private bath", t_wifi:"Wi-Fi",
+    price_eyebrow:"Rates", price_title:"Summer rates, per night",
     price_sub:"Prices are per night for 2 adults + 1 child. For 2 children, please send us a request.",
     m_jun:"June", m_jul:"July", m_aug:"August", m_sep:"September", pernight:"per night",
     rooms_info:"Rooms: 3 double rooms + sofa bed · 1 triple room + sofa bed (on request). The triple room is €5 more per night during the season.",
@@ -656,7 +723,12 @@ const I18N = {
     sc1:"Korridor i përbashkët me kënd kafeje", sc2:"Lavazza Espresso falas për miqtë tanë",
     sc3:"Hapësira të kuruara me informacion dhe detaje dekorative", sc4:"Një ambient i qetë dhe i organizuar",
     gal_eyebrow:"Galeria", gal_title:"Një vështrim brenda Villa24", gal_sub:"Një vështrim i dhomave, banjove dhe ballkoneve tona plot lule.",
-    price_eyebrow:"Dhomat & Çmimet", price_title:"Çmimet e verës, për natë",
+    rooms_eyebrow:"Dhomat Tona", rooms_title:"Dhomat në Villa24", rooms_sub:"Çdo dhomë vjen me një kënd gatimi, ballkon, pamje nga qyteti, Wi-Fi falas, kondicioner dhe banjo private.",
+    rt1_h:"Dhomë Superiore Dyshe ose Twin — Pamje Qyteti", rt1_occ:"2 mysafirë · krevat dopio ose dy krevate",
+    rt2_h:"Dhomë Dyshe me Ballkon", rt2_occ:"2 të rritur + 1 fëmijë · ballkon",
+    rt3_h:"Dhomë Dyshe e Madhe", rt3_occ:"2 mysafirë · hapësirë shtesë (~40 m²)",
+    t_view:"Pamje qyteti", t_kitchen:"Kënd gatimi", t_balcony:"Ballkon", t_ac:"Kondicioner", t_bath:"Banjo private", t_wifi:"Wi-Fi",
+    price_eyebrow:"Çmimet", price_title:"Çmimet e verës, për natë",
     price_sub:"Çmimet janë për natë për 2 të rritur + 1 fëmijë. Për 2 fëmijë, ju lutemi dërgoni një kërkesë.",
     m_jun:"Qershor", m_jul:"Korrik", m_aug:"Gusht", m_sep:"Shtator", pernight:"për natë",
     rooms_info:"Dhomat: 3 dhoma matrimoniale + sofa bed · 1 dhomë tripla + sofa bed (me kërkesë). Dhoma tripla ka 5 € më shumë për natë gjatë sezonit.",
