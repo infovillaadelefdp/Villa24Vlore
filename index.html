@@ -94,17 +94,17 @@
   .spacecard ul li::before{content:"✦";position:absolute;left:0;color:var(--gold)}
 
   /* ROOM TYPES */
-  .roomcards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:46px}
+  .roomcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-bottom:46px}
   .rcard{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;border:1px solid var(--line)}
   .rcard .rimg{height:200px;position:relative;overflow:hidden;background:linear-gradient(160deg,#006b66,#23022e)}
   .rcard .rimg img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
   .rcard:hover .rimg img{transform:scale(1.06)}
   .rcard .rbody{padding:22px 24px;display:flex;flex-direction:column;flex:1}
-  .rcard h3{font-size:1.2rem;margin-bottom:4px}
-  .rcard .occ{font-size:.85rem;color:var(--muted);margin-bottom:14px}
-  .rcard .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+  .rcard h3{font-size:1.2rem;margin-bottom:4px;min-height:2.5em}
+  .rcard .occ{font-size:.85rem;color:var(--muted);margin-bottom:14px;min-height:1.3em}
+  .rcard .tags{display:flex;flex-wrap:wrap;gap:8px}
   .rcard .tags span{background:var(--sand);color:var(--ink);font-size:.78rem;padding:5px 11px;border-radius:100px}
-  @media(max-width:900px){.roomcards{grid-template-columns:1fr}}
+  @media(max-width:560px){.roomcards{grid-template-columns:1fr}}
 
   /* PRICES */
   .prices{background:#fff}
@@ -135,14 +135,17 @@
   .disc ul li::before{content:"→";position:absolute;left:0;color:var(--gold)}
 
   /* GALLERY */
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-  .gallery figure{margin:0;border-radius:14px;overflow:hidden;aspect-ratio:1/1;cursor:pointer;position:relative;background:linear-gradient(160deg,#006b66,#23022e)}
-  .gallery figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
-  .gallery figure::after{content:"⤢";position:absolute;top:10px;right:12px;color:#fff;opacity:0;font-size:1rem;transition:.25s;text-shadow:0 1px 4px rgba(0,0,0,.5)}
-  .gallery figure:hover img{transform:scale(1.07)}
-  .gallery figure:hover::after{opacity:.9}
-  @media(max-width:900px){.gallery{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:560px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  .galgroup{margin-bottom:44px}
+  .galhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .galhead h3{font-size:1.25rem;color:var(--deep)}
+  .galhead span{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .galrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .galrow figure{margin:0;border-radius:14px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;position:relative;background:linear-gradient(160deg,#006b66,#23022e)}
+  .galrow figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+  .galrow figure::after{content:"⤢";position:absolute;top:10px;right:12px;color:#fff;opacity:0;font-size:1rem;transition:.25s;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+  .galrow figure:hover img{transform:scale(1.07)}
+  .galrow figure:hover::after{opacity:.9}
+  @media(max-width:700px){.galrow{grid-template-columns:repeat(2,1fr)}}
 
   /* LIGHTBOX */
   .lb{position:fixed;inset:0;z-index:200;background:rgba(25,0,33,.93);display:none;align-items:center;justify-content:center;padding:28px}
@@ -336,22 +339,52 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow" data-i18n="gal_eyebrow">Gallery</span>
-      <h2 data-i18n="gal_title">A look inside Villa24</h2>
-      <p data-i18n="gal_sub">A glimpse of our rooms, bathrooms and flower-filled balconies.</p>
+      <h2 data-i18n="gal_title">Our apartments, one by one</h2>
+      <p data-i18n="gal_sub">Villa24 has several independent apartments — here's a look inside each one.</p>
     </div>
-    <div class="gallery">
-      <figure><img src="IMG_0276.jpeg" alt="Villa24 — twin room" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_5662.jpeg" alt="Villa24 — balcony flowers" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_0285.jpeg" alt="Villa24 — double room" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_0290.jpeg" alt="Villa24 — studio & kitchenette" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_0296.jpeg" alt="Villa24 — double room" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_0306.jpeg" alt="Villa24 — bathroom" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_0331.jpeg" alt="Villa24 — seating corner" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_0605.jpeg" alt="Villa24 — kitchenette" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_0617.jpeg" alt="Villa24 — coffee corner" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_5764.jpeg" alt="Villa24 — towels" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_5807.jpeg" alt="Villa24 — twin room" onerror="this.parentElement.remove()"></figure>
-      <figure><img src="IMG_5834.jpeg" alt="Villa24 — bathroom & wardrobe" onerror="this.parentElement.remove()"></figure>
+
+    <div class="galgroup">
+      <div class="galhead"><h3 data-i18n="ga1">Superior Double or Twin · City View</h3><span data-i18n="ga1s">Twin beds · kitchenette · balcony</span></div>
+      <div class="galrow">
+        <figure><img src="IMG_0276.jpeg" alt="Apartment 1 — twin room" onerror="this.parentElement.remove()"></figure>
+        <figure><img src="IMG_5807.jpeg" alt="Apartment 1 — twin room" onerror="this.parentElement.remove()"></figure>
+        <figure><img src="IMG_0290.jpeg" alt="Apartment 1 — kitchenette" onerror="this.parentElement.remove()"></figure>
+      </div>
+    </div>
+
+    <div class="galgroup">
+      <div class="galhead"><h3 data-i18n="ga2">Triple Room</h3><span data-i18n="ga2s">Triple room · private bath</span></div>
+      <div class="galrow">
+        <figure><img src="IMG_0285.jpeg" alt="Apartment 2 — double room" onerror="this.parentElement.remove()"></figure>
+        <figure><img src="IMG_5764.jpeg" alt="Apartment 2 — details" onerror="this.parentElement.remove()"></figure>
+        <figure><img src="IMG_0605.jpeg" alt="Apartment 2 — kitchenette" onerror="this.parentElement.remove()"></figure>
+      </div>
+    </div>
+
+    <div class="galgroup">
+      <div class="galhead"><h3 data-i18n="ga3">Large Double Room</h3><span data-i18n="ga3s">Double bed · extra space</span></div>
+      <div class="galrow">
+        <figure><img src="IMG_0301.jpeg" alt="Apartment 3 — double room" onerror="this.parentElement.remove()"></figure>
+        <figure><img src="IMG_0296.jpeg" alt="Apartment 3 — double room" onerror="this.parentElement.remove()"></figure>
+        <figure><img src="IMG_0306.jpeg" alt="Apartment 3 — bathroom" onerror="this.parentElement.remove()"></figure>
+      </div>
+    </div>
+
+    <div class="galgroup">
+      <div class="galhead"><h3 data-i18n="ga4">Comfort Room · mini balcony</h3><span data-i18n="ga4s">Double bed · mini balcony · private bath</span></div>
+      <div class="galrow">
+        <figure><img src="IMG_0327.jpeg" alt="Apartment 4 — double room" onerror="this.parentElement.remove()"></figure>
+        <figure><img src="IMG_0331.jpeg" alt="Apartment 4 — seating corner" onerror="this.parentElement.remove()"></figure>
+        <figure><img src="IMG_5834.jpeg" alt="Apartment 4 — bathroom & wardrobe" onerror="this.parentElement.remove()"></figure>
+      </div>
+    </div>
+
+    <div class="galgroup">
+      <div class="galhead"><h3 data-i18n="ga5">Common areas &amp; views</h3><span data-i18n="ga5s">Coffee corner · flowered balcony</span></div>
+      <div class="galrow">
+        <figure><img src="IMG_0617.jpeg" alt="Villa24 — coffee corner" onerror="this.parentElement.remove()"></figure>
+        <figure><img src="IMG_5662.jpeg" alt="Villa24 — flowered balcony" onerror="this.parentElement.remove()"></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -382,10 +415,10 @@
       <div class="rcard">
         <div class="rimg"><img src="IMG_0301.jpeg" alt="Double Room with Balcony" onerror="this.remove()"></div>
         <div class="rbody">
-          <h3 data-i18n="rt2_h">Double Room with Balcony</h3>
-          <div class="occ" data-i18n="rt2_occ">2 adults + 1 child · balcony</div>
+          <h3 data-i18n="rt2_h">Triple Room</h3>
+          <div class="occ" data-i18n="rt2_occ">3 guests · triple room</div>
           <div class="tags">
-            <span data-i18n="t_balcony">Balcony</span>
+            <span data-i18n="t_ac">A/C</span>
             <span data-i18n="t_kitchen">Kitchenette</span>
             <span data-i18n="t_view">City view</span>
             <span data-i18n="t_wifi">Wi-Fi</span>
@@ -402,6 +435,20 @@
             <span data-i18n="t_kitchen">Kitchenette</span>
             <span data-i18n="t_balcony">Balcony</span>
             <span data-i18n="t_ac">A/C</span>
+            <span data-i18n="t_wifi">Wi-Fi</span>
+            <span data-i18n="t_bath">Private bath</span>
+          </div>
+        </div>
+      </div>
+      <div class="rcard">
+        <div class="rimg"><img src="IMG_0296.jpeg" alt="Comfort Room with mini balcony" onerror="this.remove()"></div>
+        <div class="rbody">
+          <h3 data-i18n="rt4_h">Comfort Room with mini balcony</h3>
+          <div class="occ" data-i18n="rt4_occ">2 guests · mini balcony</div>
+          <div class="tags">
+            <span data-i18n="t_minibalcony">Mini balcony</span>
+            <span data-i18n="t_kitchen">Kitchenette</span>
+            <span data-i18n="t_view">City view</span>
             <span data-i18n="t_wifi">Wi-Fi</span>
             <span data-i18n="t_bath">Private bath</span>
           </div>
@@ -599,7 +646,7 @@
 // --- Gallery lightbox ---
 let lbList=[], lbIdx=0;
 function lbInit(){
-  const imgs=document.querySelectorAll('.gallery img');
+  const imgs=document.querySelectorAll('.galrow img');
   lbList=[...imgs].map(i=>i.getAttribute('src'));
   imgs.forEach((im,i)=>im.addEventListener('click',()=>lbOpen(i)));
 }
@@ -653,12 +700,18 @@ const I18N = {
     spaces_common_h:"Shared spaces",
     sc1:"Shared corridor with a coffee corner", sc2:"Free Lavazza Espresso for our guests",
     sc3:"Curated spaces with local information & decorative details", sc4:"A quiet, well-organised atmosphere",
-    gal_eyebrow:"Gallery", gal_title:"A look inside Villa24", gal_sub:"A glimpse of our rooms, bathrooms and flower-filled balconies.",
+    gal_eyebrow:"Gallery", gal_title:"Our apartments, one by one", gal_sub:"Villa24 has several independent apartments — here's a look inside each one.",
+    ga1:"Superior Double or Twin · City View", ga1s:"Twin beds · kitchenette · balcony",
+    ga2:"Triple Room", ga2s:"Triple room · private bath",
+    ga3:"Large Double Room", ga3s:"Double bed · extra space",
+    ga4:"Comfort Room · mini balcony", ga4s:"Double bed · mini balcony · private bath",
+    ga5:"Common areas & views", ga5s:"Coffee corner · flowered balcony",
     rooms_eyebrow:"Our Rooms", rooms_title:"Rooms at Villa24", rooms_sub:"Every room comes with a kitchenette, balcony, city view, free Wi-Fi, air-conditioning and a private bathroom.",
     rt1_h:"Superior Double or Twin — City View", rt1_occ:"2 guests · double or twin beds",
-    rt2_h:"Double Room with Balcony", rt2_occ:"2 adults + 1 child · balcony",
+    rt2_h:"Triple Room", rt2_occ:"3 guests · triple room",
     rt3_h:"Large Double Room", rt3_occ:"2 guests · extra space (~40 m²)",
-    t_view:"City view", t_kitchen:"Kitchenette", t_balcony:"Balcony", t_ac:"A/C", t_bath:"Private bath", t_wifi:"Wi-Fi",
+    rt4_h:"Comfort Room with mini balcony", rt4_occ:"2 guests · mini balcony",
+    t_view:"City view", t_kitchen:"Kitchenette", t_balcony:"Balcony", t_ac:"A/C", t_bath:"Private bath", t_wifi:"Wi-Fi", t_minibalcony:"Mini balcony",
     price_eyebrow:"Rates", price_title:"Summer rates, per night",
     price_sub:"Prices are per night for 2 adults + 1 child. For 2 children, please send us a request.",
     m_jun:"June", m_jul:"July", m_aug:"August", m_sep:"September", pernight:"per night",
@@ -722,12 +775,18 @@ const I18N = {
     spaces_common_h:"Hapësira të përbashkëta",
     sc1:"Korridor i përbashkët me kënd kafeje", sc2:"Lavazza Espresso falas për miqtë tanë",
     sc3:"Hapësira të kuruara me informacion dhe detaje dekorative", sc4:"Një ambient i qetë dhe i organizuar",
-    gal_eyebrow:"Galeria", gal_title:"Një vështrim brenda Villa24", gal_sub:"Një vështrim i dhomave, banjove dhe ballkoneve tona plot lule.",
+    gal_eyebrow:"Galeria", gal_title:"Apartamentet tona, një nga një", gal_sub:"Villa24 ka disa apartamente të pavarura — ja një vështrim brenda secilit.",
+    ga1:"Dyshe Superiore ose Twin · Pamje Qyteti", ga1s:"Dy krevate · kënd gatimi · ballkon",
+    ga2:"Dhomë Tripla", ga2s:"Dhomë tripla · banjo private",
+    ga3:"Dhomë Dyshe e Madhe", ga3s:"Krevat dopio · hapësirë shtesë",
+    ga4:"Dhomë Comfort · ballkon i vogël", ga4s:"Krevat dopio · ballkon i vogël · banjo private",
+    ga5:"Hapësira të përbashkëta & pamje", ga5s:"Kënd kafeje · ballkon me lule",
     rooms_eyebrow:"Dhomat Tona", rooms_title:"Dhomat në Villa24", rooms_sub:"Çdo dhomë vjen me një kënd gatimi, ballkon, pamje nga qyteti, Wi-Fi falas, kondicioner dhe banjo private.",
     rt1_h:"Dhomë Superiore Dyshe ose Twin — Pamje Qyteti", rt1_occ:"2 mysafirë · krevat dopio ose dy krevate",
-    rt2_h:"Dhomë Dyshe me Ballkon", rt2_occ:"2 të rritur + 1 fëmijë · ballkon",
+    rt2_h:"Dhomë Tripla", rt2_occ:"3 mysafirë · dhomë tripla",
     rt3_h:"Dhomë Dyshe e Madhe", rt3_occ:"2 mysafirë · hapësirë shtesë (~40 m²)",
-    t_view:"Pamje qyteti", t_kitchen:"Kënd gatimi", t_balcony:"Ballkon", t_ac:"Kondicioner", t_bath:"Banjo private", t_wifi:"Wi-Fi",
+    rt4_h:"Dhomë Comfort me ballkon të vogël", rt4_occ:"2 mysafirë · ballkon i vogël",
+    t_view:"Pamje qyteti", t_kitchen:"Kënd gatimi", t_balcony:"Ballkon", t_ac:"Kondicioner", t_bath:"Banjo private", t_wifi:"Wi-Fi", t_minibalcony:"Ballkon i vogël",
     price_eyebrow:"Çmimet", price_title:"Çmimet e verës, për natë",
     price_sub:"Çmimet janë për natë për 2 të rritur + 1 fëmijë. Për 2 fëmijë, ju lutemi dërgoni një kërkesë.",
     m_jun:"Qershor", m_jul:"Korrik", m_aug:"Gusht", m_sep:"Shtator", pernight:"për natë",
